@@ -3,7 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>all Items</title>
   </head>
-  <body></body>
+  <body>
+    <%for(let i = 0; i < rows.length; i++){%>
+    <div>
+      <p><%= rows[i].title %></p>
+      <p><%= rows[i].genre %></p>
+      <p><%= rows[i].price %></p>
+      <p><%= rows[i].rating %></p>
+    </div>
+    <%}%>
+  </body>
 </html>
