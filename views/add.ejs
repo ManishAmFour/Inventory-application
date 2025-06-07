@@ -14,9 +14,9 @@
       <label>
         <span>Category:-</span>
         <select name="category" id="category">
-          <%for(let i = 0; i < categories.length; i++){%>
+          <%for(let i = 0; i < rows.length; i++){%>
 
-          <option value="<%= categories[i]%>"><%= categories[i]%></option>
+          <option value="<%= rows[i].genre%>"><%= rows[i].genre%></option>
           <%}%>
         </select>
       </label>

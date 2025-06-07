@@ -4,15 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>all Items</title>
+    <link type="text/css" rel="stylesheet" href="/items.css" />
   </head>
   <body>
-    <%for(let i = 0; i < rows.length; i++){%>
-    <div>
-      <p><%= rows[i].title %></p>
-      <p><%= rows[i].genre %></p>
-      <p><%= rows[i].price %></p>
-      <p><%= rows[i].rating %></p>
+    <div class="main-div">
+      <%for(let i = 0; i < rows.length; i++){%>
+      <div class="title-box">
+        <p><%= rows[i].title %></p>
+        <p><%= rows[i].genre %></p>
+        <p><%= rows[i].price %></p>
+        <p><%= rows[i].rating %></p>
+        <button>
+          <form method="GET" action="/delete">
+            <input name="deleteValue" value="<%= rows[i].title %>" />
+            <input type="submit" value="submit" />
+          </form>
+        </button>
+      </div>
+      <%}%>
     </div>
-    <%}%>
   </body>
 </html>

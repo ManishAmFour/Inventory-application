@@ -9,8 +9,8 @@ async function scripting() {
 );
 
 CREATE TABLE IF NOT EXISTS categories (
-    genre VARCHAR (255),
-    title VARCHAR (255)
+    genre VARCHAR (255)
+    
 );
 
 INSERT INTO games(title,price,rating,genre)
@@ -33,26 +33,14 @@ VALUES
 
 
 
-INSERT INTO categories(genre,title)
+INSERT INTO categories(genre)
 VALUES
-    ('GTA 4','action'),
-    ('GTA 5','action'),
-    ('RDR2','adventure'),
-    ('FIFA 23','sports'),
-    ('The Witcher 3','adventure'),
-    ('Resident Evil Village','horror'),
-    ('Cyberpunk 2077','action'),
-    ('The Sims 4','simulation'),
-    ('Forza Horizon 5','racing'),
-    ('God of War','action'),
-    ('Assassins Creed Valhalla','adventure'),
-    ('NBA 2K24','sports'),
-    ('Outlast','horror'),
-    ('Cities: Skylines','simulation'),
-    ('Need for Speed Heat','racing');
-
-
-
+    ('action'),
+    ('adventure'),
+    ('sports'),
+    ('horror'),
+    ('simulation'),
+    ('racing');
 `;
   await pool.query(command);
 }

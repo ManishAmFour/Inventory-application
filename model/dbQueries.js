@@ -7,16 +7,10 @@ VALUES
  (($1),($2),($3),($4));
 `;
 
-  await pool.query(command, [title, category, price, rating]);
-
-  let command2 = `
-INSERT INTO categories(genre,title)
-VALUES 
-(($1),($2));
-`;
-
-  await pool.query(command2, [category, title]);
+  await pool.query(command, [title, price, rating, category]);
 };
+
+const deleteTheItems = async () => {};
 
 const fetchingTheDatabase = async () => {
   const command = `SELECT * FROM games`;
@@ -30,8 +24,18 @@ const fetchingTheDatabaseForCategory = async () => {
   return rows;
 };
 
+const additionOfCategory = async (category) => {
+  let command = `
+INSERT INTO categories(genre)
+VALUES 
+ (($1));
+`;
+  await pool.query(command, [category]);
+};
+
 module.exports = {
   additionToDatabase,
   fetchingTheDatabase,
   fetchingTheDatabaseForCategory,
+  additionOfCategory,
 };
