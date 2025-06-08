@@ -8,16 +8,20 @@
   </head>
   <body>
     <div class="main-div">
-      <%for(let i = 0; i < rows.length; i++){%>
+      <%-include('homepage.ejs')%> <%for(let i = 0; i < rows.length; i++){%>
       <div class="title-box">
         <p><%= rows[i].title %></p>
         <p><%= rows[i].genre %></p>
-        <p><%= rows[i].price %></p>
+        <p>$<%= rows[i].price %></p>
         <p><%= rows[i].rating %></p>
-        <button>
-          <form method="GET" action="/delete">
-            <input name="deleteValue" value="<%= rows[i].title %>" />
-            <input type="submit" value="submit" />
+        <button class="entire-delete-button">
+          <form class="delete-form" method="GET" action="/delete">
+            <input
+              class="inputDeleteValue"
+              name="deleteValue"
+              value="<%= rows[i].title %>"
+            />
+            <input type="submit" value="Delete" />
           </form>
         </button>
       </div>

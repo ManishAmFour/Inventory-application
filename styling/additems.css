@@ -1,0 +1,142 @@
+/* Root variables for easy theming */
+:root {
+  --bg-gradient-start: #ffecd2;
+  --bg-gradient-end: #fcb69f;
+  --form-bg: rgba(255, 255, 255, 0.8);
+  --accent-color: #ff7e5f;
+  --accent-color-alt: #feb47b;
+  --text-color: #333;
+  --input-border: #ddd;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Animated gradient background */
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(
+    -45deg,
+    var(--bg-gradient-start),
+    var(--bg-gradient-end),
+    #ead2ac,
+    #ee9ca7
+  );
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Form container with floating card effect */
+form {
+  background: var(--form-bg);
+  border-radius: 1rem;
+  box-shadow: 0 8px 24px var(--shadow-color);
+  padding: 2rem;
+  max-width: 400px;
+  width: 100%;
+  backdrop-filter: blur(10px);
+  display: grid;
+  gap: 1.5rem;
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+}
+form:hover {
+  transform: translateY(-5px);
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  color: var(--text-color);
+  font-size: 0.9rem;
+}
+label span {
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+}
+
+/* Inputs and select styling with focus microinteraction */
+input[type="text"],
+input[type="number"],
+select {
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--input-border);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 4px rgba(255, 126, 95, 0.2);
+  outline: none;
+}
+
+/* Placeholder color animation */
+input::placeholder {
+  color: #bbb;
+  transition: color 0.3s ease;
+}
+input:focus::placeholder {
+  color: transparent;
+}
+
+/* Submit button with animated gradient and microinteraction */
+input[type="submit"] {
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(
+    90deg,
+    var(--accent-color),
+    var(--accent-color-alt)
+  );
+  background-size: 200% 200%;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: background-position 0.4s ease, transform 0.2s ease;
+}
+input[type="submit"]:hover {
+  background-position: 100% 0;
+  transform: scale(1.05);
+}
+input[type="submit"]:active {
+  transform: scale(0.95);
+}
+
+/* Microinteraction for select arrow */
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20width='12'%20height='7'%20viewBox='0%200%2012%207'%20xmlns='http://www.w3.org/2000/svg'%3E%3Cpath%20d='M6%207L0%200h12L6%207z'%20fill='%23777'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 0.75rem;
+  padding-right: 2.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  form {
+    padding: 1.5rem;
+    width: 90%;
+  }
+}

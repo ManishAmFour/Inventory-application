@@ -3,12 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/category.css" />
     <title>Document</title>
   </head>
   <body>
-    <%console.log(rows)%> <%for(let i = 0; i < rows.length; i++){%>
-    <div>
-      <p><%= rows[i].genre %></p>
+    <%-include('homepage.ejs')%> <%for(let i = 0; i < rows.length; i++){%>
+    <div class="category-div">
+      <p class="category-title"><%= rows[i].genre %></p>
+      <form method="POST" action="/delete">
+        <input
+          name="deleteCategory"
+          style="display: none"
+          value="<%= rows[i].genre %>"
+        />
+        <input class="delete-button-category" value="delete" type="submit" />
+      </form>
     </div>
     <%}%>
   </body>

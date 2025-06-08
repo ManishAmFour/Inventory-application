@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/additems.css" />
   </head>
   <body>
     <form action="/addition" method="POST">
@@ -13,7 +14,7 @@
       </label>
       <label>
         <span>Category:-</span>
-        <select name="category" id="category">
+        <select name="category" id="category" required>
           <%for(let i = 0; i < rows.length; i++){%>
 
           <option value="<%= rows[i].genre%>"><%= rows[i].genre%></option>
@@ -22,13 +23,20 @@
       </label>
       <label>
         <span>Price:-</span>
-        <input type="text" name="price" required
+        <input
+          placeholder="$"
+          type="number"
+          min="30"
+          max="800"
+          name="price"
+          required
       /></label>
       <label>
         <span>Rating:-</span>
-        <input type="text" name="rating" required
+        <input type="number" min="0" max="5" name="rating" required
       /></label>
       <input type="submit" value="submit" />
     </form>
+    <%-include('homepage.ejs')%>
   </body>
 </html>
